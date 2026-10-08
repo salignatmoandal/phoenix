@@ -372,6 +372,14 @@ export function ModelMenu({
               setModelType(key === "DECISION" ? "DECISION" : "LLM");
               setSearchValue("");
             }}
+            // Tabs default to filling their parent (height: 100%, flex-grow)
+            // because they normally own the panel below them. Here the menu
+            // owns the content, so the tab bar must size to its tabs or it
+            // stretches into the menu's min-height and leaves a gap.
+            css={css`
+              flex: none;
+              height: auto;
+            `}
           >
             <TabList aria-label="Model type">
               <Tab id="LLM">LLM</Tab>
